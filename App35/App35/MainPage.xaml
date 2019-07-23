@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App35"
+             x:Class="App35.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Int16 x:Key="Column1">10</x:Int16>
+            <x:Int16 x:Key="Column2">80</x:Int16>
+            <x:Int16 x:Key="Column3">60</x:Int16>
+            <x:Int16 x:Key="Column4">90</x:Int16>
+            <x:Int16 x:Key="Column5">20</x:Int16>
+
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Text="Search" Grid.Row="0"
+                Command="{Binding SearchCommand}"/>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding TestCollection}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="{StaticResource Column1}" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="{StaticResource Column2}" />
+                                <ColumnDefinition Width="{StaticResource Column3}" />
+                                <ColumnDefinition Width="{StaticResource Column4}" />
+                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="{StaticResource Column5}" />
+                                <ColumnDefinition Width="5" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding A}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="13" TextColor="Black" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="2" Grid.Row="2" Text="{Binding B}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
+
+                            <Label Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Text="{Binding C}" FontSize="13" TextColor="Black" />
+
+                            <Label Grid.Column="4" Grid.Row="1" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Text="{Binding D}" FontSize="13" TextColor="Black" />
+                            <Label Grid.Column="4" Grid.Row="2" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Text="{Binding E}" FontSize="12" TextColor="Black" />
+
+                            <Label Grid.Column="5" Grid.Row="1" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding F}" FontSize="13" TextColor="Black" />
+
+                            <Label Grid.Column="5" Grid.Row="2" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding G}" FontSize="12" TextColor="Black" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>
